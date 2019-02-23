@@ -187,6 +187,14 @@ public class RoverTest {
     }
 
     @Test
+    public void wrapsAroundToTopEnd2() {
+        Rover rover = new Rover(5, 0, Rover.Dir.N, planet);
+        rover.commandB();
+        assertThat(rover.getX(), is(5));
+        assertThat(rover.getY(), is(9));
+    }
+
+    @Test
     public void wrapsAroundToBottomEnd1() {
         Rover rover = new Rover(5, 9, Rover.Dir.N, planet);
         rover.commandF();

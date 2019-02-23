@@ -66,7 +66,11 @@ public class Rover {
     public void commandB() {
         switch(dir) {
             case N:
-                y--;
+                if (y == 0) {
+                    y = planet.getWidth() - 1;
+                } else {
+                    y--;
+                }
                 break;
             case S:
                 y++;
