@@ -90,6 +90,9 @@ public class Pluto {
             case S:
                 dir = Dir.W;
                 break;
+            case W:
+                dir = Dir.N;
+                break;
         }
     }
 }
