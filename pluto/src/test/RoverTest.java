@@ -10,6 +10,7 @@ public class RoverTest {
 
     private Planet planet = new Planet(10, 10);
 
+    // Testing for individual commands.
     @Test
     public void yIncreasesByOneWithFWhenFacingNorth() {
         Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
@@ -146,6 +147,7 @@ public class RoverTest {
         assertThat(rover.getY(), is(0));
     }
 
+    // Testing for cases where the rover needs to wrap around.
     @Test
     public void wrapsAroundToRightEnd1() {
         Rover rover = new Rover(0, 5, Rover.Dir.W, planet);
@@ -210,6 +212,7 @@ public class RoverTest {
         assertThat(rover.getY(), is(0));
     }
 
+    // Testing for commands with multiple commands.
     @Test
     public void multipleCommands1() {
         Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
@@ -237,6 +240,7 @@ public class RoverTest {
         assertThat(rover.getDir(), is(Rover.Dir.N));
     }
 
+    // Testing for commands with only one command.
     @Test
     public void singleCommand1() {
         Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
@@ -273,6 +277,7 @@ public class RoverTest {
         assertThat(rover.getDir(), is(Rover.Dir.E));
     }
 
+    // Testing for commands that has obstacles on its path.
     @Test
     public void commandWithObstacle1() {
         planet.setObstacle(0, 1);

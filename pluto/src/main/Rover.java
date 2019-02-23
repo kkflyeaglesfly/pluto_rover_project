@@ -30,6 +30,11 @@ public class Rover {
         return dir;
     }
 
+    /*
+    Iterates through the commands one by one by char.
+    For each command, checks if that move would encounter an obstacle.
+    Returns an error statement if it does encounter an obstacle, otherwise, move on.
+     */
     public void command(String commands) {
         for (int i = 0; i < commands.length(); i++) {
             if (checkObstacle(commands.charAt(i))) {
@@ -66,6 +71,10 @@ public class Rover {
         }
     }
 
+    /*
+    Checks if the move would take the rover off the edge.
+    If so, wraps around the edge.
+    */
     public void commandF() {
         switch(dir) {
             case N:
@@ -99,6 +108,10 @@ public class Rover {
         }
     }
 
+    /*
+    Checks if the move would take the rover off the edge.
+    If so, wraps around the edge.
+    */
     public void commandB() {
         switch(dir) {
             case N:
@@ -166,6 +179,10 @@ public class Rover {
         }
     }
 
+    /*
+    Checks whether moving forward or backwards results in the rover crashing into an obstacle.
+    If so, returns true, else returns false.
+     */
     public boolean checkObstacle(char command) {
         if (command == 'F') {
             commandF();
@@ -186,6 +203,7 @@ public class Rover {
         }
     }
 
+    // Reports the error statement including where the obstacle is.
     public void reportObstacle(int x, int y) {
         System.out.println("There is an obstacle at: (" + x + ", " + y + "), return to previous spot, stay there.");
     }
