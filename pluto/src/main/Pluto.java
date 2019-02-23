@@ -49,6 +49,9 @@ public class Pluto {
             case S:
                 y++;
                 break;
+            case E:
+                x--;
+                break;
         }
     }
 }
