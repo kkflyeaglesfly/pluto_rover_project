@@ -155,6 +155,14 @@ public class RoverTest {
     }
 
     @Test
+    public void wrapsAroundToRightEnd2() {
+        Rover rover = new Rover(0, 5, Rover.Dir.E, planet);
+        rover.commandB();
+        assertThat(rover.getX(), is(9));
+        assertThat(rover.getY(), is(5));
+    }
+
+    @Test
     public void wrapsAroundToLeftEnd1() {
         Rover rover = new Rover(9, 5, Rover.Dir.E, planet);
         rover.commandF();

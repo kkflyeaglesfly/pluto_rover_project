@@ -33,7 +33,7 @@ public class Rover {
     public void commandF() {
         switch(dir) {
             case N:
-                if (y == planet.getLength() - 1) {
+                if (y == planet.getWidth() - 1) {
                     y = 0;
                 } else {
                     y++;
@@ -41,13 +41,13 @@ public class Rover {
                 break;
             case S:
                 if (y == 0) {
-                    y = planet.getLength() - 1;
+                    y = planet.getWidth() - 1;
                 } else {
                     y--;
                 }
                 break;
             case E:
-                if (x == planet.getWidth() - 1) {
+                if (x == planet.getLength() - 1) {
                     x = 0;
                 } else {
                     x++;
@@ -55,7 +55,7 @@ public class Rover {
                 break;
             case W:
                 if (x == 0) {
-                    x = planet.getWidth() - 1;
+                    x = planet.getLength() - 1;
                 } else {
                     x--;
                 }
@@ -72,7 +72,11 @@ public class Rover {
                 y++;
                 break;
             case E:
-                x--;
+                if (x == 0) {
+                    x = planet.getLength() - 1;
+                } else {
+                    x--;
+                }
                 break;
             case W:
                 x++;
