@@ -47,4 +47,12 @@ public class PlutoTest {
         assertThat(rover.getX(), is(0));
     }
 
+    @Test
+    public void yIncreasesByOneWithBWhenFacingSouth() {
+        Pluto rover = new Pluto(0, 0, Pluto.Dir.S);
+        rover.commandB();
+        assertThat(rover.getY(), is(1));
+        assertThat(rover.getX(), is(0));
+    }
+
 }
