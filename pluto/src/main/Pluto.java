@@ -40,4 +40,12 @@ public class Pluto {
                 break;
         }
     }
+
+    public void commandB() {
+        switch(dir) {
+            case N:
+                y--;
+                break;
+        }
+    }
 }
