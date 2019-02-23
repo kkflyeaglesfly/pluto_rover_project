@@ -88,4 +88,13 @@ public class PlutoTest {
         assertThat(rover.getX(), is(0));
         assertThat(rover.getY(), is(0));
     }
+
+    @Test
+    public void facesEastWhenRotateLeftFacingSouth() {
+        Pluto rover = new Pluto(0, 0, Pluto.Dir.S);
+        rover.commandL();
+        assertThat(rover.getDir(), is(Pluto.Dir.E));
+        assertThat(rover.getY(), is(0));
+        assertThat(rover.getX(), is(0));
+    }
 }
