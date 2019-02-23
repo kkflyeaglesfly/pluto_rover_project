@@ -209,4 +209,13 @@ public class RoverTest {
         assertThat(rover.getX(), is(5));
         assertThat(rover.getY(), is(0));
     }
+
+    @Test
+    public void multipleCommands1() {
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
+        rover.command("FFRFF");
+        assertThat(rover.getX(), is(2));
+        assertThat(rover.getY(), is(2));
+        assertThat(rover.getDir(), is(Rover.Dir.E));
+    }
 }

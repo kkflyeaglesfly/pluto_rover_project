@@ -30,6 +30,25 @@ public class Rover {
         return dir;
     }
 
+    public void command(String commands) {
+        for (int i = 0; i < commands.length(); i++) {
+            switch(commands.charAt(i)) {
+                case 'F':
+                    commandF();
+                    break;
+                case 'B':
+                    commandB();
+                    break;
+                case 'L':
+                    commandL();
+                    break;
+                case 'R':
+                    commandR();
+                    break;
+            }
+        }
+    }
+
     public void commandF() {
         switch(dir) {
             case N:
