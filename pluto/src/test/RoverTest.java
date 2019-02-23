@@ -220,6 +220,60 @@ public class RoverTest {
     }
 
     @Test
+    public void multipleCommands2() {
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
+        rover.command("LFRRF");
+        assertThat(rover.getX(), is(0));
+        assertThat(rover.getY(), is(0));
+        assertThat(rover.getDir(), is(Rover.Dir.E));
+    }
+
+    @Test
+    public void multipleCommands3() {
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
+        rover.command("FFFFFFFFFF");
+        assertThat(rover.getX(), is(0));
+        assertThat(rover.getY(), is(0));
+        assertThat(rover.getDir(), is(Rover.Dir.N));
+    }
+
+    @Test
+    public void singleCommand1() {
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
+        rover.command("F");
+        assertThat(rover.getX(), is(0));
+        assertThat(rover.getY(), is(1));
+        assertThat(rover.getDir(), is(Rover.Dir.N));
+    }
+
+    @Test
+    public void singleCommand2() {
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
+        rover.command("L");
+        assertThat(rover.getX(), is(0));
+        assertThat(rover.getY(), is(0));
+        assertThat(rover.getDir(), is(Rover.Dir.W));
+    }
+
+    @Test
+    public void singleCommand3() {
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
+        rover.command("B");
+        assertThat(rover.getX(), is(0));
+        assertThat(rover.getY(), is(9));
+        assertThat(rover.getDir(), is(Rover.Dir.N));
+    }
+
+    @Test
+    public void singleCommand4() {
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
+        rover.command("R");
+        assertThat(rover.getX(), is(0));
+        assertThat(rover.getY(), is(0));
+        assertThat(rover.getDir(), is(Rover.Dir.E));
+    }
+
+    @Test
     public void commandWithObstacle1() {
         planet.setObstacle(0, 1);
         Rover rover = new Rover(0, 0, Rover.Dir.N, planet);

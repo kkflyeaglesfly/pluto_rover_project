@@ -166,6 +166,7 @@ public class Rover {
             int resultX = getX();
             int resultY = getY();
             boolean isObstacle = planet.getField()[planet.getWidth() - 1 - resultY][resultX] == 1;
+            commandF();
             return isObstacle;
         } else {
             return false;
