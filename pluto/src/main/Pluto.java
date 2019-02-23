@@ -3,7 +3,7 @@ package main;
 public class Pluto {
 
     public enum Dir {
-        N, S
+        N, S, E
     }
 
     private int x;
@@ -31,6 +31,9 @@ public class Pluto {
                 break;
             case S:
                 y--;
+                break;
+            case E:
+                x++;
                 break;
         }
     }
