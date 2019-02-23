@@ -1,19 +1,21 @@
 package main;
 
-public class Pluto {
+public class Rover {
 
     public enum Dir {
-        N, S, E, W
+        N, E, S, W
     }
 
     private int x;
     private int y;
     private Dir dir;
+    private Planet planet;
 
-    public Pluto(int x, int y, Dir dir) {
+    public Rover(int x, int y, Dir dir, Planet planet) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.planet = planet;
     }
 
     public int getX() {
@@ -40,7 +42,11 @@ public class Pluto {
                 x++;
                 break;
             case W:
-                x--;
+                if (x == 0) {
+                    x = planet.getWidth() - 1;
+                } else {
+                    x--;
+                }
                 break;
         }
     }

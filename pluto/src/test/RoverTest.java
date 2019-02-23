@@ -1,15 +1,18 @@
 package test;
 
-import main.Pluto;
+import main.Planet;
+import main.Rover;
 import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class PlutoTest {
+public class RoverTest {
+
+    private Planet planet = new Planet(10, 10);
 
     @Test
     public void yIncreasesByOneWithFWhenFacingNorth() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.N);
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
         rover.commandF();
         assertThat(rover.getY(), is(1));
         assertThat(rover.getX(), is(0));
@@ -17,7 +20,7 @@ public class PlutoTest {
 
     @Test
     public void yDecreasesByOneWithFWhenFacingSouth() {
-        Pluto rover = new Pluto(0, 1, Pluto.Dir.S);
+        Rover rover = new Rover(0, 1, Rover.Dir.S, planet);
         rover.commandF();
         assertThat(rover.getY(), is(0));
         assertThat(rover.getX(), is(0));
@@ -25,7 +28,7 @@ public class PlutoTest {
 
     @Test
     public void xIncreasesByOneWithFWhenFacingEast() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.E);
+        Rover rover = new Rover(0, 0, Rover.Dir.E, planet);
         rover.commandF();
         assertThat(rover.getX(), is(1));
         assertThat(rover.getY(), is(0));
@@ -33,7 +36,7 @@ public class PlutoTest {
 
     @Test
     public void xDecreasesByOneWithFWhenFacingWest() {
-        Pluto rover = new Pluto(1, 0, Pluto.Dir.W);
+        Rover rover = new Rover(1, 0, Rover.Dir.W, planet);
         rover.commandF();
         assertThat(rover.getY(), is(0));
         assertThat(rover.getX(), is(0));
@@ -41,7 +44,7 @@ public class PlutoTest {
 
     @Test
     public void yDecreasesByOneWithBWhenFacingNorth() {
-        Pluto rover = new Pluto(0, 1, Pluto.Dir.N);
+        Rover rover = new Rover(0, 1, Rover.Dir.N, planet);
         rover.commandB();
         assertThat(rover.getY(), is(0));
         assertThat(rover.getX(), is(0));
@@ -49,7 +52,7 @@ public class PlutoTest {
 
     @Test
     public void yIncreasesByOneWithBWhenFacingSouth() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.S);
+        Rover rover = new Rover(0, 0, Rover.Dir.S, planet);
         rover.commandB();
         assertThat(rover.getY(), is(1));
         assertThat(rover.getX(), is(0));
@@ -57,7 +60,7 @@ public class PlutoTest {
 
     @Test
     public void xDecreasesByOneWithBWhenFacingEast() {
-        Pluto rover = new Pluto(1, 0, Pluto.Dir.E);
+        Rover rover = new Rover(1, 0, Rover.Dir.E, planet);
         rover.commandB();
         assertThat(rover.getY(), is(0));
         assertThat(rover.getX(), is(0));
@@ -65,7 +68,7 @@ public class PlutoTest {
 
     @Test
     public void xIncreasesByOneWithBWhenFacingWest() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.W);
+        Rover rover = new Rover(0, 0, Rover.Dir.W, planet);
         rover.commandB();
         assertThat(rover.getY(), is(0));
         assertThat(rover.getX(), is(1));
@@ -73,73 +76,81 @@ public class PlutoTest {
 
     @Test
     public void facesWestWhenRotateLeftFacingNorth() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.N);
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
         rover.commandL();
-        assertThat(rover.getDir(), is(Pluto.Dir.W));
+        assertThat(rover.getDir(), is(Rover.Dir.W));
         assertThat(rover.getX(), is(0));
         assertThat(rover.getY(), is(0));
     }
 
     @Test
     public void facesSouthWhenRotateLeftFacingWest() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.W);
+        Rover rover = new Rover(0, 0, Rover.Dir.W, planet);
         rover.commandL();
-        assertThat(rover.getDir(), is(Pluto.Dir.S));
+        assertThat(rover.getDir(), is(Rover.Dir.S));
         assertThat(rover.getX(), is(0));
         assertThat(rover.getY(), is(0));
     }
 
     @Test
     public void facesEastWhenRotateLeftFacingSouth() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.S);
+        Rover rover = new Rover(0, 0, Rover.Dir.S, planet);
         rover.commandL();
-        assertThat(rover.getDir(), is(Pluto.Dir.E));
+        assertThat(rover.getDir(), is(Rover.Dir.E));
         assertThat(rover.getY(), is(0));
         assertThat(rover.getX(), is(0));
     }
 
     @Test
     public void facesNorthWhenRotateLeftFacingEast() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.E);
+        Rover rover = new Rover(0, 0, Rover.Dir.E, planet);
         rover.commandL();
-        assertThat(rover.getDir(), is(Pluto.Dir.N));
+        assertThat(rover.getDir(), is(Rover.Dir.N));
         assertThat(rover.getY(), is(0));
         assertThat(rover.getX(), is(0));
     }
 
     @Test
     public void facesEastWhenRotateRightFacingNorth() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.N);
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
         rover.commandR();
-        assertThat(rover.getDir(), is(Pluto.Dir.E));
+        assertThat(rover.getDir(), is(Rover.Dir.E));
         assertThat(rover.getX(), is(0));
         assertThat(rover.getY(), is(0));
     }
 
     @Test
     public void facesSouthWhenRotateRightFacingEast() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.E);
+        Rover rover = new Rover(0, 0, Rover.Dir.E, planet);
         rover.commandR();
-        assertThat(rover.getDir(), is(Pluto.Dir.S));
+        assertThat(rover.getDir(), is(Rover.Dir.S));
         assertThat(rover.getX(), is(0));
         assertThat(rover.getY(), is(0));
     }
 
     @Test
     public void facesWestWhenRotateRightFacingSouth() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.S);
+        Rover rover = new Rover(0, 0, Rover.Dir.S, planet);
         rover.commandR();
-        assertThat(rover.getDir(), is(Pluto.Dir.W));
+        assertThat(rover.getDir(), is(Rover.Dir.W));
         assertThat(rover.getX(), is(0));
         assertThat(rover.getY(), is(0));
     }
 
     @Test
     public void facesNorthWhenRotateRightFacingWest() {
-        Pluto rover = new Pluto(0, 0, Pluto.Dir.W);
+        Rover rover = new Rover(0, 0, Rover.Dir.W, planet);
         rover.commandR();
-        assertThat(rover.getDir(), is(Pluto.Dir.N));
+        assertThat(rover.getDir(), is(Rover.Dir.N));
         assertThat(rover.getX(), is(0));
         assertThat(rover.getY(), is(0));
+    }
+
+    @Test
+    public void wrapsAroundToRightEnd1() {
+        Rover rover = new Rover(0, 5, Rover.Dir.W, planet);
+        rover.commandF();
+        assertThat(rover.getX(), is(9));
+        assertThat(rover.getY(), is(5));
     }
 }
