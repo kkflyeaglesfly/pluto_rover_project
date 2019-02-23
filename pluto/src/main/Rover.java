@@ -32,6 +32,10 @@ public class Rover {
 
     public void command(String commands) {
         for (int i = 0; i < commands.length(); i++) {
+            if (checkObstacle(commands.charAt(i))) {
+                reportObstacle();
+                break;
+            }
             switch(commands.charAt(i)) {
                 case 'F':
                     commandF();
@@ -147,5 +151,28 @@ public class Rover {
                 dir = Dir.N;
                 break;
         }
+    }
+
+    public boolean checkObstacle(char command) {
+        if (command == 'F') {
+            commandF();
+            int resultX = getX();
+            int resultY = getY();
+            boolean isObstacle = planet.getField()[planet.getWidth() - 1 - resultY][resultX] == 1;
+            commandB();
+            return isObstacle;
+        } else if (command == 'B') {
+            commandB();
+            int resultX = getX();
+            int resultY = getY();
+            boolean isObstacle = planet.getField()[planet.getWidth() - 1 - resultY][resultX] == 1;
+            return isObstacle;
+        } else {
+            return false;
+        }
+    }
+
+    public void reportObstacle() {
+        System.out.println("There is an obstacle, return to previous spot, stay there.");
     }
 }
