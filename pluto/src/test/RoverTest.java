@@ -282,4 +282,14 @@ public class RoverTest {
         assertThat(rover.getY(), is(0));
         assertThat(rover.getDir(), is(Rover.Dir.N));
     }
+
+    @Test
+    public void commandWithObstacle2() {
+        planet.setObstacle(2, 2);
+        Rover rover = new Rover(0, 0, Rover.Dir.N, planet);
+        rover.command("FFRFF");
+        assertThat(rover.getX(), is(1));
+        assertThat(rover.getY(), is(2));
+        assertThat(rover.getDir(), is(Rover.Dir.E));
+    }
 }

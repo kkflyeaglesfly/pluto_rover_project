@@ -33,7 +33,20 @@ public class Rover {
     public void command(String commands) {
         for (int i = 0; i < commands.length(); i++) {
             if (checkObstacle(commands.charAt(i))) {
-                reportObstacle();
+                int obstacleX;
+                int obstacleY;
+                if (commands.charAt(i) == 'F') {
+                    commandF();
+                    obstacleX = getX();
+                    obstacleY = getY();
+                    commandB();
+                } else {
+                    commandB();
+                    obstacleX = getX();
+                    obstacleY = getY();
+                    commandF();
+                }
+                reportObstacle(obstacleX, obstacleY);
                 break;
             }
             switch(commands.charAt(i)) {
@@ -173,7 +186,7 @@ public class Rover {
         }
     }
 
-    public void reportObstacle() {
-        System.out.println("There is an obstacle, return to previous spot, stay there.");
+    public void reportObstacle(int x, int y) {
+        System.out.println("There is an obstacle at: (" + x + ", " + y + "), return to previous spot, stay there.");
     }
 }
