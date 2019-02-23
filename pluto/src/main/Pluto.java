@@ -78,4 +78,12 @@ public class Pluto {
                 break;
         }
     }
+
+    public void commandR() {
+        switch(dir) {
+            case N:
+                dir = Dir.E;
+                break;
+        }
+    }
 }
