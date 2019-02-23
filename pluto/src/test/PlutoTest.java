@@ -15,4 +15,12 @@ public class PlutoTest {
         assertThat(rover.getX(), is(0));
     }
 
+    @Test
+    public void yDecreasesByOneWithFWhenFacingSouth() {
+        Pluto rover = new Pluto(0, 1, Pluto.Dir.S);
+        rover.commandF();
+        assertThat(rover.getY(), is(0));
+        assertThat(rover.getX(), is(0));
+    }
+
 }
