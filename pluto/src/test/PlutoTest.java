@@ -71,4 +71,13 @@ public class PlutoTest {
         assertThat(rover.getX(), is(1));
     }
 
+    @Test
+    public void facesWestWhenRotateLeftFacingNorth() {
+        Pluto rover = new Pluto(0, 0, Pluto.Dir.N);
+        rover.commandL();
+        assertThat(rover.getDir(), is(Pluto.Dir.W));
+        assertThat(rover.getX(), is(0));
+        assertThat(rover.getY(), is(0));
+    }
+
 }

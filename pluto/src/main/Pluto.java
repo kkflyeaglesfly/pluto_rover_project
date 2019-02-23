@@ -24,6 +24,10 @@ public class Pluto {
         return y;
     }
 
+    public Dir getDir() {
+        return dir;
+    }
+
     public void commandF() {
         switch(dir) {
             case N:
@@ -54,6 +58,14 @@ public class Pluto {
                 break;
             case W:
                 x++;
+                break;
+        }
+    }
+
+    public void commandL() {
+        switch(dir) {
+            case N:
+                dir = Dir.W;
                 break;
         }
     }
