@@ -73,6 +73,9 @@ public class Pluto {
             case S:
                 dir = Dir.E;
                 break;
+            case E:
+                dir = Dir.N;
+                break;
         }
     }
 }
