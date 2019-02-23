@@ -52,6 +52,9 @@ public class Pluto {
             case E:
                 x--;
                 break;
+            case W:
+                x++;
+                break;
         }
     }
 }
