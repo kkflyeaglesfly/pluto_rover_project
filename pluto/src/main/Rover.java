@@ -73,7 +73,11 @@ public class Rover {
                 }
                 break;
             case S:
-                y++;
+                if (y == planet.getWidth() - 1) {
+                    y = 0;
+                } else {
+                    y++;
+                }
                 break;
             case E:
                 if (x == 0) {
